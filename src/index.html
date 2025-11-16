@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Owly Book Search - Search and discover books by category or keyword">
+
+  <!-- Font kit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+
+  <!-- Icons kit -->
+  <script src="https://kit.fontawesome.com/b43cd41dc2.js" crossorigin="anonymous"></script>
+
+  <title>OwlyBookSearch</title>
+</head>
+<body>
+
+  <header role="banner">
+    <div id="title-container" class="container">
+      <h1>Owly Book Search</h1>
+			<div id="form-and-menu-container" class="container">
+				<form id="search-form" role="search" aria-label="Book search form">
+					<label for="search-bar" class="visually-hidden">Search for books or categories</label>
+					<input 
+						id="search-bar" 
+						type="search" 
+						placeholder="Search for books or category..." 
+						aria-label="Search for books or category"
+						aria-describedby="search-description"
+					/>
+					<span id="search-description" class="visually-hidden">Enter a book title, author, or category to search</span>
+					<button id="search-button" type="submit" aria-label="Search books">
+						<i class="fa-solid fa-magnifying-glass fa-lg" aria-hidden="true"></i>
+					</button>
+				</form>
+
+				<!-- Hamburger Menu Button -->
+				<button 
+					id="hamburger-btn" 
+					class="hamburger-btn" 
+					aria-label="Toggle genre menu" 
+					aria-expanded="false"
+					aria-controls="genre-menu"
+				>
+					<i class="fa-solid fa-bars fa-xl" aria-hidden="true"></i>
+				</button></div>
+			</div>
+
+    </div>
+		
+  </header>
+
+  <main class="container" role="main">
+    <nav aria-label="Book genres">
+      <ul id="genre-menu" role="menu">
+        <li data-genre="classic" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-book fa-lg" aria-hidden="true"></i>
+          Classics
+        </li>
+        <li data-genre="poetry" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-pen fa-lg" aria-hidden="true"></i>
+          Poetry
+        </li>
+        <li data-genre="sci-fi" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-user-astronaut fa-lg" aria-hidden="true"></i>
+          Sci-Fi
+        </li>
+        <li data-genre="adventure" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-anchor fa-lg" aria-hidden="true"></i>
+          Adventure
+        </li>
+        <li data-genre="fantasy" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-hat-wizard fa-lg" aria-hidden="true"></i>
+          Fantasy
+        </li>
+        <li data-genre="horror" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-ghost fa-lg" aria-hidden="true"></i>
+          Horror
+        </li>
+        <li data-genre="detective-stories" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-user-secret fa-lg" aria-hidden="true"></i>
+          Mystery
+        </li>
+        <li data-genre="comics" role="menuitem" tabindex="0">
+          <i class="fa-regular fa-comment-dots fa-lg" aria-hidden="true"></i>
+          Comics
+        </li>
+        <li data-genre="history" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-building-columns fa-lg" aria-hidden="true"></i>
+          History
+        </li>
+        <li data-genre="philosophy" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-scroll fa-lg" aria-hidden="true"></i>
+          Philosophy
+        </li>
+        <li data-genre="science" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-atom fa-lg" aria-hidden="true"></i>
+          Science
+        </li>
+				<li data-action="show-favorites" role="menuitem" tabindex="0">
+          <i class="fa-solid fa-heart fa-lg" aria-hidden="true"></i>
+          Favorites
+        </li>
+      </ul>
+    </nav>
+
+
+    <!-- Loading Spinner viene creato dinamicamente da helpers.js -->
+    <!-- Error Message viene creato dinamicamente da helpers.js -->
+
+    <!-- Search Results Container -->
+    <div 
+      id="search-result" 
+      class="search-result-container" 
+      role="region" 
+      aria-label="Search results"
+      aria-live="polite"
+    >
+      <!-- I risultati della ricerca verranno inseriti qui dinamicamente -->
+    </div>
+  </main>
+
+  <!-- Modal per la descrizione del libro -->
+  <div 
+    id="book-modal" 
+    class="modal" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-labelledby="modal-book-title"
+  >
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="close-modal" aria-label="Close book details modal">
+        <i class="fa-solid fa-xmark fa-xl" aria-hidden="true"></i>
+      </button>
+      
+      <div class="modal-body">
+        <!-- Il contenuto viene generato dinamicamente dal JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer role="contentinfo">
+    <p>Developed by
+      <a href="https://saracairo.github.io/contacts/">
+        Sara Cairo</a>
+    </p>
+  </footer>
+
+  <!-- Webpack inietterà automaticamente bundle.js qui -->
+</body>
+</html>

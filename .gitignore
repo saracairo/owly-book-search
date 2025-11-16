@@ -1,0 +1,23 @@
+# Environment variables and configuration
+.env
+config.js
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Note
+scar-notes.txt
