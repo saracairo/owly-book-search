@@ -1,6 +1,6 @@
 import { getBookDetails, getCoverImageUrl } from '../api/open-library.js';
 
-// Variabile per salvare l'elemento che ha attivato il modal
+// variabile per salvare l'elemento che ha attivato il modal
 let lastFocusedElement = null;
 
 /**

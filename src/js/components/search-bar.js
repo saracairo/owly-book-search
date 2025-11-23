@@ -178,9 +178,10 @@ async function handleSearch(event) {
     // pulizia risultati precedenti
     clearBookList();
 
-    // chiamata API
-    const books = await searchBooksBySubject(validation.cleanedInput);
-    
+    // chiamata API (nuova struttura)
+    const result = await searchBooksBySubject(validation.cleanedInput);
+    const books = result.books || [];
+
     // riabilito pulsante
     if (searchButton) {
       searchButton.disabled = false;
@@ -201,6 +202,20 @@ async function handleSearch(event) {
 
     // annuncio per gli screen reader
     announceResults(books.length);
+
+    // paginazione (se serve)
+    if (result.totalCount > books.length && window.pagination) {
+      window.pagination.init(validation.cleanedInput, result.totalCount, async (page, offset) => {
+        showLoading('search-result', 'Searching for books...');
+        clearBookList();
+        const nextResult = await searchBooksBySubject(validation.cleanedInput, 20, offset);
+        hideLoading(true);
+        renderBookList(nextResult.books || []);
+        announceResults(nextResult.books ? nextResult.books.length : 0);
+      });
+    } else if (window.pagination) {
+      window.pagination.hide();
+    }
 
   } catch (error) {
     // riabilito pulsante
