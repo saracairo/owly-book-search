@@ -3,7 +3,7 @@ import '../css/styles.css';
 import { searchBooksBySubject, getBookDetails } from './api/open-library.js';
 import { initSearchBar } from './components/search-bar.js';
 import { initGenreMenu } from './components/genre-menu.js';
-import { initBookDetailsModal } from './components/book-details.js';
+// import { initBookDetailsModal } from './components/book-details.js'; // lo carico in lazy loading
 import { pagination } from './utils/pagination.js';
 
 
@@ -25,7 +25,7 @@ async function testAPI() {
 	}
 }
 
-testAPI(); // TODO: rimuovere test in produzione
+// testAPI(); // commentare in produzione
 
 console.log('Webpack configurato correttamente.');
 console.log('API Key:', process.env.API_KEY); // Test dotenv
@@ -41,7 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // inizializzazione componenti
   initSearchBar();
   initGenreMenu();
-  initBookDetailsModal();
+  // Lazy load del modal dettagli libro
+  import('./components/book-details.js').then(module => {
+    if (module.initBookDetailsModal) module.initBookDetailsModal();
+  });
   initHamburgerMenu();
 });
 
