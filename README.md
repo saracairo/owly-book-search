@@ -6,19 +6,17 @@
 <a href="https://developer.mozilla.org/docs/Web/HTML" target="_blank"><img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge" alt="HTML5"></a>
 <a href="https://developer.mozilla.org/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=for-the-badge" alt="CSS3"></a>
 
-Applicazione web per la ricerca, esplorazione e condivisione di libri tramite le API di Open Library.
+Applicazione web per la ricerca, esplorazione e condivisione di libri tramite le API di Open Library. Sviluppata per esercizio in puro JavaScript.
 
 
 ## Funzionalità principali
 
-- 🔍 Ricerca libri per titolo, autore o genere
-- 📚 Navigazione per generi letterari
-- 📄 Visualizzazione dettagli libro (copertina, descrizione, soggetti)
-- 🔢 Paginazione intelligente dei risultati
-- 🔗 Condivisione libro via link, social, WhatsApp, Web Share API
-- 🖼️ Visualizzazione copertine ad alta risoluzione
-- 🕶️ Modal accessibile per dettagli libro
-- 📱 Interfaccia responsive e mobile-friendly
+- Ricerca libri per titolo, autore o genere
+- Menu navigazione per generi letterari
+- Visualizzazione dettagli libro (copertina, descrizione, soggetti)
+- Paginazione dei risultati
+- Condivisione libro via link
+- Interfaccia responsive e mobile-friendly
 
 ## Installazione
 

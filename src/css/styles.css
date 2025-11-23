@@ -1,3 +1,27 @@
+/* Toast feedback per condivisione link */
+/* Toast feedback accanto al bottone condividi */
+.share-feedback-toast {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--coral-secondary);
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+}
+
+.share-feedback-toast.show-toast {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1.08);
+}
 /* ========================================
     CSS RESET (MINIMAL)
    ======================================== */
@@ -865,7 +889,8 @@ footer a {
   justify-content: flex-start;
 }
 
-.btn-read-more {
+.btn-read-more,
+.btn-share-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -878,11 +903,12 @@ footer a {
   transition: all 0.3s ease;
 }
 
-.btn-read-more:hover {
+.btn-read-more:hover,
+.btn-share-link:hover {
   background-color: var(--coral-secondary);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 127, 80, 0.4);
+  /* box-shadow: 0 4px 8px rgba(255, 127, 80, 0.4); */
 }
 
 @keyframes fadeIn {
@@ -1179,21 +1205,26 @@ footer a {
   margin-top: 30px;
 }
 
-.btn-read-more {
+/* Pulsanti azione modal uniformati */
+.btn-modal-action {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 25px;
-  background: var(--primary-lightblue);
-  color: white;
+  background: var(--lightblue-primary);
+  color: black;
+  border-radius: 8px;
   text-decoration: none;
-  border-radius: var(--border-radius-sm);
-  font-weight: 600;
-  transition: background 0.3s ease;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-read-more:hover {
-  background: var(--primary-coral);
+.btn-modal-action:hover {
+  background: var(--coral-secondary);
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* ========================================

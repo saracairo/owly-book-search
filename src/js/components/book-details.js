@@ -112,6 +112,7 @@ function renderBookDetails(details, container) {
   }
 
 	// creazione dinamica contenuto HTML
+  const bookUrl = `https://openlibrary.org${details.key || ''}`;
   container.innerHTML = `
     <div class="book-details-grid">
       <div class="book-cover-large">
@@ -123,14 +124,12 @@ function renderBookDetails(details, container) {
       </div>
       <div class="book-details-info">
         <h2 class="book-details-title">${details.title}</h2>
-        
         ${details.firstPublishDate ? `
           <p class="book-meta">
             <i class="fas fa-calendar" aria-hidden="true"></i>
             <strong>First Published:</strong> ${details.firstPublishDate}
           </p>
         ` : ''}
-        
         ${subjectsText ? `
           <div class="book-subjects">
             <p><strong>Subjects:</strong></p>
@@ -139,27 +138,63 @@ function renderBookDetails(details, container) {
             </div>
           </div>
         ` : ''}
-        
         <div class="book-description">
           <h3>Description</h3>
           <p>${description}</p>
         </div>
-        
-        <div class="book-actions">
+        <div class="book-actions" style="display: flex; gap: 1em; align-items: center; position: relative;">
           <a 
-            href="https://openlibrary.org${details.key || ''}" 
+            href="${bookUrl}" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="btn-read-more"
             aria-label="Read more about ${details.title} on Open Library"
           >
-            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            View on Open Library
+            <button class="btn-read-more" type="button">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              View on Open Library
+            </button>
           </a>
+          <div style="position: relative; display: inline-block;">
+            <button 
+              class="btn-share-link" 
+              type="button"
+              aria-label="Condividi il link del libro"
+              style="margin-left: 0;"
+            >
+              <i class="fas fa-share-alt" aria-hidden="true"></i>
+              Condividi
+            </button>
+            <div class="share-feedback-toast" style="display:none;"></div>
+          </div>
         </div>
       </div>
     </div>
   `;
+  // Event listener per il pulsante condividi
+  const shareBtn = container.querySelector('.btn-share-link');
+  const feedbackToast = shareBtn?.parentElement.querySelector('.share-feedback-toast');
+  if (shareBtn && feedbackToast) {
+    shareBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(bookUrl);
+        feedbackToast.textContent = '✅ Link copiato negli appunti!';
+        feedbackToast.style.display = 'block';
+        feedbackToast.classList.add('show-toast');
+        setTimeout(() => {
+          feedbackToast.classList.remove('show-toast');
+          feedbackToast.style.display = 'none';
+        }, 2000);
+      } catch (err) {
+        feedbackToast.textContent = '❌ Errore nella copia del link.';
+        feedbackToast.style.display = 'block';
+        feedbackToast.classList.add('show-toast');
+        setTimeout(() => {
+          feedbackToast.classList.remove('show-toast');
+          feedbackToast.style.display = 'none';
+        }, 2000);
+      }
+    });
+  }
 }
 
 /**
